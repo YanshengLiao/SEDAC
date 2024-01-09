@@ -21,6 +21,9 @@ Stage 4: **SBR Identification**
   - torch==2.0.0
   - scikit-learn==1.2.0
 
+## Datasets
+`datasets.7z` is the original comma separated value (CSV) files, `data.7z` is the CSV files with irrelevant columns dropped.
+
 ## Usage
 There are 3 python files in total: `CVAE_model.py` is 
 the structure of CVAE model, `cvae_synthesis.py` is
@@ -49,4 +52,8 @@ For `Stage 4: SBR Identification`, `classifier` can be assigned
 different machine learning algorithms for experiments.
 ```
 classifier = LogisticRegression()
+```
+`StratifiedKFold` is applied to make sure that the distribution of the training set and test set is consistent. `random_state=0` is to make our results reproducible.
+```
+skfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
 ```
